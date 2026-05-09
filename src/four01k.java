@@ -2,6 +2,7 @@
 //
 
 
+import java.nio.file.FileSystemNotFoundException;
 
 public class four01k extends retirementAccount {
     int salary; //starting salary
@@ -13,12 +14,11 @@ public class four01k extends retirementAccount {
     //constructors, default and then fully loaded
     public four01k() {
         super(30, 65,0,0,7,false);
-        this.age = 21;
-        this.retAge = 65;
-        this.startBal = 0;
-        this.endBal = 0;
-        this.percent = 7;
-        this.taxable = false;
+        this.salary = 75000;
+        this.contribution = 4;
+        this.raise = 5;
+        this.match = 10;
+        this.salaryMatch = 10;
     }
 
     public four01k (int age, int retAge, double startBal, double endBal, int percent, boolean taxable, int salary, int contribution,int raise, int match, int salaryMatch) {
@@ -52,5 +52,6 @@ public class four01k extends retirementAccount {
             currentSal *= (1 + (raise / 100.0));
         }
         this.endBal = currentBal;
+        System.out.println("Your balance is $" + String.format("%.2f", this.endBal));
     }
 }
