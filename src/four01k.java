@@ -21,7 +21,7 @@ public class four01k extends retirementAccount {
         this.taxable = false;
     }
 
-    public four01k (int age, int retAge, int startBal, int endBal, int percent, boolean taxable, int salary, int contribution,int raise, int match, int salaryMatch) {
+    public four01k (int age, int retAge, double startBal, double endBal, int percent, boolean taxable, int salary, int contribution,int raise, int match, int salaryMatch) {
         super(age, retAge, startBal, endBal, percent, taxable);
         this.salary = salary;
         this.contribution = contribution;
@@ -30,14 +30,27 @@ public class four01k extends retirementAccount {
         this.salaryMatch = salaryMatch;
     }
 
-
-
-
-
-
-
     @Override
     public void calculateReturn(){
+        double currentBal = startBal;
+        double currentSal = salary;
+        int years = retAge - age;
+        //math bits
+        for (int i = 0; i < years; i++){
+            //employee contributions
+            double empCont = currentSal * (contribution / 100.0);
 
+            //employer matching
+            double matchLimit = currentSal * (salaryMatch / 100.0);
+            double actualMatch = Math.min(empCont, matchLimit) * (match / 100.0);
+
+            //addition + actual growth
+            currentBal += empCont + actualMatch;
+            currentBal *= (1 + (percent / 100.0));
+
+            //raise :D
+            currentSal *= (1 + (raise / 100.0));
+        }
+        this.endBal = currentBal;
     }
 }
