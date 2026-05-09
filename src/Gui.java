@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Main {
+public class Gui{
 
     public static void main(String[] args) {
         //set up for the GUI portion
