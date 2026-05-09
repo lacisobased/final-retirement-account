@@ -7,8 +7,8 @@ abstract public class retirementAccount {
 
     int age;
     int retAge;
-    int input; //starting cash
-    int balance; //after everything is said and done
+    double startBal; //starting cash
+    double endBal; //after everything is said and done
     int percentage; //how much they grow
     boolean taxable; //to determine if its Roth
 
