@@ -30,6 +30,7 @@ public class Gui extends JFrame {
         //pane for information, roth vs non roth accounts
         pane.addTab("pane 1", infoPan);
         pane.setTabComponentAt(0, new JLabel("401k vs IRA"));
+        JLabel
 
 
         frame.add(pane);
