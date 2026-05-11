@@ -23,7 +23,7 @@ public class Gui extends JFrame {
 
         //tabbed panes for the various settings
         JTabbedPane pane = new JTabbedPane();
-        JComponent infoPan = new JPanel(new GridLayout(2, 2, 20, 20));
+        JComponent infoPan = new JPanel(new GridLayout(2, 2, 5, 05));
         JComponent fourPan = new JPanel(new GridLayout(2, 2, 20, 20));
         JComponent iraPan = new JPanel(new GridLayout(2, 2, 20, 20));
 
@@ -31,19 +31,24 @@ public class Gui extends JFrame {
         pane.addTab("information", infoPan);
         pane.setTabComponentAt(0, new JLabel("401k vs IRA"));
         JLabel roth4 = new JLabel("<html>Roth 401k: <br/>" +
-                "this is the description of a roth 401k. blah blah blah");
+                "" );
+
         JLabel four01k = new JLabel("<html>401k <br/>" +
                 "this is the description of a regular 401k. blah blah blah");
             //adding portion for the IRAS below
         JLabel  rothI = new JLabel("<html>Roth IRA: <br/>" +
-                "this is the description of a roth IRA. blah blah");
+                "<html> \u2058 A Roth IRA is funded with after-tax dollars, allowing both growth and qualified withdrawals to remain tax-free after age 59½ and after holding the IRA for at least five years. <br/>" +
+                "<html> \u2058 You can withdraw your contributions at any time tax-free and without penalty, even if you haven’t met the five-year or age requirements."
+                );
         JLabel ira = new JLabel("<html>IRA: <br/>" +
-                "this is the description of a ira. blah blah blah");
+                "<html>");
             //adding them in order
         infoPan.add(rothI);
         infoPan.add(ira);
         infoPan.add(roth4);
         infoPan.add(four01k);
+         //border
+        //infoPan.setBorder(BorderFactory.createEmptyBorder(30, 40, 30, 30));
 
 
         frame.add(pane);
