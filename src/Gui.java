@@ -13,7 +13,7 @@ public class Gui extends JFrame {
         //set up for the GUI portion
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400,400);
+        frame.setSize(800,800);
         frame.setLayout(new GridLayout(5, 5, 10, 10));
 
         //components for selecting accounts
@@ -28,9 +28,23 @@ public class Gui extends JFrame {
         JComponent iraPan = new JPanel(new GridLayout(2, 2, 20, 20));
 
         //pane for information, roth vs non roth accounts
-        pane.addTab("pane 1", infoPan);
+        pane.addTab("information", infoPan);
         pane.setTabComponentAt(0, new JLabel("401k vs IRA"));
-        JLabel
+        JLabel roth4 = new JLabel("<html>Roth 401k: <br/>" +
+                "this is the description of a roth 401k. blah blah blah");
+        JLabel four01k = new JLabel("<html>401k <br/>" +
+                "this is the description of a regular 401k. blah blah blah");
+            //adding portion for the IRAS below
+        JLabel  rothI = new JLabel("<html>Roth IRA: <br/>" +
+                "this is the description of a roth IRA. blah blah");
+        JLabel ira = new JLabel("<html>IRA: <br/>" +
+                "this is the description of a ira. blah blah blah");
+            //adding them in order
+        infoPan.add(rothI);
+        infoPan.add(ira);
+        infoPan.add(roth4);
+        infoPan.add(four01k);
+
 
 
         frame.add(pane);
