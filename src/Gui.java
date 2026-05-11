@@ -14,7 +14,7 @@ public class Gui extends JFrame {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800,800);
-        frame.setLayout(new GridLayout(5, 5, 10, 10));
+        frame.setLayout(new GridLayout(1, 1, 10, 10));
 
         //components for selecting accounts
         JLabel selection = new JLabel("Select Account to Simulate:");
@@ -46,13 +46,9 @@ public class Gui extends JFrame {
         infoPan.add(four01k);
 
 
-
         frame.add(pane);
 
         frame.setVisible(true);
     }
 
 }
-
-
-////testing testing test
