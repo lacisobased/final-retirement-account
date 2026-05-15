@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import org.jfree.*;
 
 public class Gui {
 
@@ -16,16 +16,12 @@ public class Gui {
         frame.setSize(800,800);
         frame.setLayout(new GridLayout(1, 1, 10, 10));
 
-        //components for selecting accounts
-//        JLabel selection = new JLabel("Select Account to Simulate:");
-//        String[] options = {"401k", "IRA"};
-//        JComboBox<String> optionBox = new JComboBox<>(options);
 
         //tabbed panes for the various settings
         JTabbedPane pane = new JTabbedPane();
         JComponent infoPan = new JPanel(new GridLayout(2, 2, 5, 5));
         JComponent fourPan = new JPanel(new GridLayout(10, 2, 20, 20));
-        JComponent iraPan = new JPanel(new GridLayout(2, 2, 20, 20));
+        /** JComponent iraPan = new JPanel(new GridLayout(2, 2, 20, 20)); why the FUCK did i do this */
 
         //pane for information, roth vs non roth accounts
         pane.addTab("information", infoPan);
