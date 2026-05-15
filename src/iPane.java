@@ -4,6 +4,7 @@ import org.jfree.data.xy.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
 
 public class iPane extends JPanel {
@@ -185,8 +186,42 @@ public class iPane extends JPanel {
                                                     dataset
                                             );
 
-                            ChartPanel chartPanel =
-                                    new ChartPanel(chart);
+                            //save button
+                            ChartPanel chartPanel = new ChartPanel(chart);
+                            JButton saveBtn = new JButton("Save as PNG"); //save button
+
+                            JPanel chartContainer = new JPanel(new BorderLayout());
+                            chartContainer.add(chartPanel, BorderLayout.CENTER);
+                            chartContainer.add(saveBtn, BorderLayout.SOUTH);
+
+                            //save button fuctionality
+                            //save button functionality
+                            saveBtn.addActionListener(new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    //save file window
+                                    JFileChooser fileChooser = new JFileChooser();
+                                    fileChooser.setDialogTitle("Save Chart As");
+
+                                    //when user clicks save
+                                    if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                                        File fileToSave = fileChooser.getSelectedFile();
+
+                                        //append .png
+                                        if (!fileToSave.getName().toLowerCase().endsWith(".png")) {
+                                            fileToSave = new File(fileToSave.getParentFile(), fileToSave.getName() + ".png");
+                                        }
+
+                                        try {
+                                            //save the image
+                                            ChartUtils.saveChartAsPNG(fileToSave, chart, 1000, 1000);
+                                            JOptionPane.showMessageDialog(null, "chart saved successfully!", "success", JOptionPane.INFORMATION_MESSAGE);
+                                        } catch (Exception ex) {
+                                            JOptionPane.showMessageDialog(null, "error saving chart.", "error", JOptionPane.ERROR_MESSAGE);
+                                        }
+                                    }
+                                }
+                            });
 
                             //remove old chart tab
                             if(pane.getTabCount() > 3) {
@@ -195,7 +230,7 @@ public class iPane extends JPanel {
 
                             pane.addTab(
                                     "IRA Chart",
-                                    chartPanel);
+                                    chartContainer);
 
                             pane.setSelectedIndex(3);
 
@@ -232,4 +267,6 @@ public class iPane extends JPanel {
                     }
                 });
     }
+
+
 }
