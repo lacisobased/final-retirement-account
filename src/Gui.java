@@ -1,5 +1,5 @@
 //ryan williams jr; 1373857; CSCI-125; M07
-//
+//last worked on by ryan 5:14pm
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,13 +49,18 @@ public class Gui extends JFrame {
         infoPan.add(ira);
         infoPan.add(roth4);
         infoPan.add(four01k);
-         //border
-        //infoPan.setBorder(BorderFactory.createEmptyBorder(30, 40, 30, 30));
+
+        //pane for the 401k calculator
+        pane.addTab("401k calculator", fourPan);
+        pane.setTabComponentAt(1, new JLabel("401k calculator"));
+        JLabel test1 = new JLabel("<html>Test 1: <br/>");
 
 
-        frame.add(pane);
 
-        frame.setVisible(true);
+
+        frame.add(pane); //adding the tabbed pane
+
+        frame.setVisible(true); //setting it visible
     }
 
 }
