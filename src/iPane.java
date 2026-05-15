@@ -14,7 +14,7 @@ public class iPane extends JPanel {
 
         this.pane = pane;
 
-        this.setLayout(new GridLayout(8, 2, 20, 20));
+        this.setLayout(new GridLayout(9, 2, 20, 20));
 
         //labels + fields
         JLabel cAge = new JLabel("Current Age:");
@@ -50,6 +50,12 @@ public class iPane extends JPanel {
         JButton clear =
                 new JButton("Reset");
 
+        JLabel output =
+                new JLabel("Total amount saved: ");
+
+        JLabel output2 =
+                new JLabel("");
+
         //add components
         this.add(cAge);
         this.add(cAgeField);
@@ -68,6 +74,9 @@ public class iPane extends JPanel {
 
         this.add(rothBox);
         this.add(maxBox);
+
+        this.add(output);
+        this.add(output2);
 
         this.add(calculate);
         this.add(clear);
@@ -121,6 +130,8 @@ public class iPane extends JPanel {
 
                             double FINAL =
                                     ira.dCalculateReturn();
+
+                            output2.setText("$" + String.format("%.2f", FINAL));
 
                             JOptionPane.showMessageDialog(
                                     null,
@@ -217,6 +228,7 @@ public class iPane extends JPanel {
 
                         rothBox.setSelected(false);
                         maxBox.setSelected(false);
+                        output2.setText("");
                     }
                 });
     }
