@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Gui extends JFrame {
+public class Gui {
 
     public static void main(String[] args) {
         //set up for the GUI portion
@@ -17,9 +17,9 @@ public class Gui extends JFrame {
         frame.setLayout(new GridLayout(1, 1, 10, 10));
 
         //components for selecting accounts
-        JLabel selection = new JLabel("Select Account to Simulate:");
-        String[] options = {"401k", "IRA"};
-        JComboBox<String> optionBox = new JComboBox<>(options);
+//        JLabel selection = new JLabel("Select Account to Simulate:");
+//        String[] options = {"401k", "IRA"};
+//        JComboBox<String> optionBox = new JComboBox<>(options);
 
         //tabbed panes for the various settings
         JTabbedPane pane = new JTabbedPane();
@@ -31,7 +31,7 @@ public class Gui extends JFrame {
         pane.addTab("information", infoPan);
         pane.setTabComponentAt(0, new JLabel("401k vs IRA"));
         JLabel roth4 = new JLabel("<html>Roth 401k: <br/>" +
-                "" );
+                "test string 1" );
 
         JLabel four01k = new JLabel("<html>401k <br/>" +
                 "this is the description of a regular 401k. blah blah blah");
@@ -70,6 +70,8 @@ public class Gui extends JFrame {
         JTextField eMatchField = new JTextField(1);
         JLabel eSalaryMatch = new JLabel("Percentage of salary you're employer will match: ");
         JTextField eSalaryField = new JTextField(1);
+        JLabel output = new JLabel("Total Amount Saved: ");
+        //JLabel
         JButton clear = new JButton("Clear");
         JButton calculate = new JButton("Calculate");
 
@@ -82,6 +84,8 @@ public class Gui extends JFrame {
         fourPan.add(salaryField);
         fourPan.add(raisE);
         fourPan.add(raiseField);
+        fourPan.add(contributioN);
+        fourPan.add(contributionField);
         fourPan.add(returN);
         fourPan.add(returnField);
         fourPan.add(eMatch);
