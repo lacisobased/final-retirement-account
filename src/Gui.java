@@ -21,13 +21,13 @@ public class Gui {
         infoPane infoPan = new infoPane();
         fPane fourPan = new fPane(pane);
         iPane iraPan = new iPane(pane);
-        /** JComponent iraPan = new JPanel(new GridLayout(2, 2, 20, 20)); why the FUCK did i do this */
+
 
         //pane for information, roth vs non roth accounts
         pane.addTab("information", infoPan);
         pane.setTabComponentAt(0, new JLabel("401k vs IRA"));
 
-        //pane for the 401k calculator
+        //pane for the 401k calculator & ira calculator
         pane.addTab("401k calculator", fourPan);
         pane.setTabComponentAt(1, new JLabel("401k calculator"));
         pane.addTab("IRA calculator", iraPan);

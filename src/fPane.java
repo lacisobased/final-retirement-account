@@ -113,12 +113,12 @@ public class fPane extends JPanel {
                     );
                     //chart in new tab
                     ChartPanel chartPanel = new ChartPanel(chart);
-                    if (pane.getTabCount() > 2) {
-                        pane.removeTabAt(2);
+                    if (pane.getTabCount() > 3) {
+                        pane.removeTabAt(3);
                     }
 
-                    pane.addTab("Growth Chart", chartPanel);
-                    pane.setSelectedIndex(2);
+                    pane.addTab("401k Growth Chart", chartPanel);
+                    pane.setSelectedIndex(3);
 
                 }
                 catch (NumberFormatException ex) {
