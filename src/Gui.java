@@ -5,7 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import org.jfree.*;
+import org.jfree.data.*;
+import org.jfree.chart.*;
 
 public class Gui {
 
