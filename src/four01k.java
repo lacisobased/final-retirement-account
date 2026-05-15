@@ -32,7 +32,7 @@ public class four01k extends retirementAccount {
     }
 
     @Override
-    public void calculateReturn(){
+    public double dCalculateReturn(){
         double currentBal = startBal;
         double currentSal = salary;
         int years = retAge - age;
@@ -53,7 +53,7 @@ public class four01k extends retirementAccount {
             currentSal *= (1 + (raise / 100.0));
         }
         this.endBal = currentBal;
-        System.out.println("Your balance is $" + String.format("%.2f", this.endBal));
+        return endBal;
     }
 
     public ArrayList<Double> getYearlyBalances() {
@@ -82,4 +82,30 @@ public class four01k extends retirementAccount {
 
         return balances;
     }
+
+    @Override
+    public void calculateReturn(){
+        double currentBal = startBal;
+        double currentSal = salary;
+        int years = retAge - age;
+        //math bits
+        for (int i = 0; i < years; i++){
+            //employee contributions
+            double empCont = currentSal * (contribution / 100.0);
+
+            //employer matching
+            double matchLimit = currentSal * (salaryMatch / 100.0);
+            double actualMatch = Math.min(empCont, matchLimit) * (match / 100.0);
+
+            //addition + actual growth
+            currentBal += empCont + actualMatch;
+            currentBal *= (1 + (percent / 100.0));
+
+            //raise :D
+            currentSal *= (1 + (raise / 100.0));
+        }
+        this.endBal = currentBal;
+        System.out.println("Your balance is $" + String.format("%.2f", this.endBal));
+    }
+
 }
