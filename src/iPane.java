@@ -194,7 +194,6 @@ public class iPane extends JPanel {
                             chartContainer.add(chartPanel, BorderLayout.CENTER);
                             chartContainer.add(saveBtn, BorderLayout.SOUTH);
 
-                            //save button fuctionality
                             //save button functionality
                             saveBtn.addActionListener(new ActionListener() {
                                 @Override
