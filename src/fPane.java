@@ -82,6 +82,21 @@ public class fPane extends JPanel {
 
             }
         });
+
+        clear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cAgeField.setText("25");
+                rAgeField.setText("65");
+                salaryField.setText("40000");
+                contributionField.setText("6");
+                raiseField.setText("4");
+                returnField.setText("7");
+                eMatchField.setText("50");
+                eSalaryField.setText("10");
+                cBalField.setText("0");
+            }
+        });
     }
 }
 
