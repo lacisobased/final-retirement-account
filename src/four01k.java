@@ -56,7 +56,7 @@ public class four01k extends retirementAccount {
         return endBal;
     }
 
-    public ArrayList<Double> getYearlyBalances() {
+    public ArrayList<Double> yearlyBalances() {
         //make a new list to hold data
         ArrayList<Double> balances = new ArrayList<>();
 
@@ -71,6 +71,33 @@ public class four01k extends retirementAccount {
             double empCont = currentSal * (contribution / 100.0);
             double matchLimit = currentSal * (salaryMatch / 100.0);
             double actualMatch = Math.min(empCont, matchLimit) * (match / 100.0);
+
+            currentBal += empCont + actualMatch;
+            currentBal *= (1 + (percent / 100.0));
+            currentSal *= (1 + (raise / 100.0));
+
+            //adds the result to the data list
+            balances.add(currentBal);
+        }
+
+        return balances;
+    }
+
+    public ArrayList<Double> yearlyBalancesMissing() {
+        //make a new list to hold data
+        ArrayList<Double> balances = new ArrayList<>();
+
+        double currentBal = startBal;
+        double currentSal = salary;
+        int years = retAge - age;
+
+        //year 0
+        balances.add(currentBal);
+
+        for (int i = 0; i < years; i++) {
+            double empCont = currentSal * (contribution / 100.0);
+            double matchLimit = currentSal * (salaryMatch / 100.0);
+            double actualMatch = 0;
 
             currentBal += empCont + actualMatch;
             currentBal *= (1 + (percent / 100.0));
