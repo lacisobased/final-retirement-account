@@ -1,0 +1,53 @@
+//ryan williams jr; 1373857; CSCI-125; M07
+//
+
+import javax.swing.*;
+import java.awt.*;
+
+public class fPane extends JPanel {
+    public fPane() {
+        this.setLayout(new GridLayout(10,2, 20, 20 ));
+        
+        //fields
+        JLabel cAge = new JLabel("Enter current age: ");
+        JTextField cAgeField = new JTextField(1);
+        JLabel rAge = new JLabel("Enter retirement age: ");
+        JTextField rAgeField = new JTextField(1);
+        JLabel salarY = new JLabel("Enter current salary: "); //has a different title to differenciate it frm other things in code elsewhere
+        JTextField salaryField = new JTextField(1);
+        JLabel contributioN = new JLabel("Percentage you will contribute each month: ");
+        JTextField contributionField = new JTextField(1);
+        JLabel raisE = new JLabel("How much will your salary raise annually: ");
+        JTextField raiseField = new JTextField(1);
+        JLabel returN = new JLabel("Annual rate of return, in percentage: ");
+        JTextField returnField = new JTextField(1);
+        JLabel eMatch = new JLabel("How much will your employer match your contributions: ");
+        JTextField eMatchField = new JTextField(1);
+        JLabel eSalaryMatch = new JLabel("Percentage of salary you're employer will match: ");
+        JTextField eSalaryField = new JTextField(1);
+        JLabel output = new JLabel("Total Amount Saved: ");
+        //buttons
+        JButton clear = new JButton("Clear");
+        JButton calculate = new JButton("Calculate");
+        
+        //rinse repeat
+        this.add(cAge);
+        this.add(cAgeField);
+        this.add(rAge);
+        this.add(rAgeField);
+        this.add(salarY);
+        this.add(salaryField);
+        this.add(raisE);
+        this.add(raiseField);
+        this.add(contributioN);
+        this.add(contributionField);
+        this.add(returN);
+        this.add(returnField);
+        this.add(eMatch);
+        this.add(eMatchField);
+        this.add(eSalaryMatch);
+        this.add(eSalaryField);
+        this.add(calculate);
+        this.add(clear);
+    }
+}
