@@ -20,6 +20,7 @@ public class Gui {
         JTabbedPane pane = new JTabbedPane();
         infoPane infoPan = new infoPane();
         fPane fourPan = new fPane(pane);
+        iPane iraPan = new iPane(pane);
         /** JComponent iraPan = new JPanel(new GridLayout(2, 2, 20, 20)); why the FUCK did i do this */
 
         //pane for information, roth vs non roth accounts
@@ -29,6 +30,8 @@ public class Gui {
         //pane for the 401k calculator
         pane.addTab("401k calculator", fourPan);
         pane.setTabComponentAt(1, new JLabel("401k calculator"));
+        pane.addTab("IRA calculator", iraPan);
+        pane.setTabComponentAt(2, new JLabel("IRA calculator"));
 
 
         frame.add(pane); //adding the tabbed pane
