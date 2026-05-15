@@ -23,8 +23,8 @@ public class Gui extends JFrame {
 
         //tabbed panes for the various settings
         JTabbedPane pane = new JTabbedPane();
-        JComponent infoPan = new JPanel(new GridLayout(2, 2, 5, 05));
-        JComponent fourPan = new JPanel(new GridLayout(2, 2, 20, 20));
+        JComponent infoPan = new JPanel(new GridLayout(2, 2, 5, 5));
+        JComponent fourPan = new JPanel(new GridLayout(10, 2, 20, 20));
         JComponent iraPan = new JPanel(new GridLayout(2, 2, 20, 20));
 
         //pane for information, roth vs non roth accounts
@@ -53,8 +53,43 @@ public class Gui extends JFrame {
         //pane for the 401k calculator
         pane.addTab("401k calculator", fourPan);
         pane.setTabComponentAt(1, new JLabel("401k calculator"));
-        JLabel test1 = new JLabel("<html>Test 1: <br/>");
+            //fields
+        JLabel cAge = new JLabel("Enter current age: ");
+        JTextField cAgeField = new JTextField(1);
+        JLabel rAge = new JLabel("Enter retirement age: ");
+        JTextField rAgeField = new JTextField(1);
+        JLabel salarY = new JLabel("Enter current salary: "); //has a different title to differenciate it frm other things in code elsewhere
+        JTextField salaryField = new JTextField(1);
+        JLabel contributioN = new JLabel("Percentage you will contribute each month: ");
+        JTextField contributionField = new JTextField(1);
+        JLabel raisE = new JLabel("How much will your salary raise annually: ");
+        JTextField raiseField = new JTextField(1);
+        JLabel returN = new JLabel("Annual rate of return, in percentage: ");
+        JTextField returnField = new JTextField(1);
+        JLabel eMatch = new JLabel("How much will your employer match your contributions: ");
+        JTextField eMatchField = new JTextField(1);
+        JLabel eSalaryMatch = new JLabel("Percentage of salary you're employer will match: ");
+        JTextField eSalaryField = new JTextField(1);
+        JButton clear = new JButton("Clear");
+        JButton calculate = new JButton("Calculate");
 
+        //adding things to pane
+        fourPan.add(cAge);
+        fourPan.add(cAgeField);
+        fourPan.add(rAge);
+        fourPan.add(rAgeField);
+        fourPan.add(salarY);
+        fourPan.add(salaryField);
+        fourPan.add(raisE);
+        fourPan.add(raiseField);
+        fourPan.add(returN);
+        fourPan.add(returnField);
+        fourPan.add(eMatch);
+        fourPan.add(eMatchField);
+        fourPan.add(eSalaryMatch);
+        fourPan.add(eSalaryField);
+        fourPan.add(calculate);
+        fourPan.add(clear);
 
 
 
