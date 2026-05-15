@@ -56,16 +56,20 @@ public class four01k extends retirementAccount {
         return endBal;
     }
 
-    public ArrayList<Double> yearlyBalances() {
-        //make a new list to hold data
-        ArrayList<Double> balances = new ArrayList<>();
+    public ArrayList<double[]> yearlyBalances() {
+        //list of arrays
+        ArrayList<double[]> yearly = new ArrayList<>();
+
+        double currentBalYMatch = startBal;
+        double currentBalNMatch = startBal;
+        double cumulativeEmpCont = startBal;
 
         double currentBal = startBal;
         double currentSal = salary;
         int years = retAge - age;
 
         //year 0
-        balances.add(currentBal);
+        yearly.add(new double[]{cumulativeEmpCont, currentBalNMatch, currentBalYMatch});
 
         for (int i = 0; i < years; i++) {
             double empCont = currentSal * (contribution / 100.0);
@@ -76,39 +80,27 @@ public class four01k extends retirementAccount {
             currentBal *= (1 + (percent / 100.0));
             currentSal *= (1 + (raise / 100.0));
 
-            //adds the result to the data list
-            balances.add(currentBal);
-        }
+            //employee contributions
+            cumulativeEmpCont += empCont;
 
-        return balances;
-    }
+            //balance no match
+            currentBalNMatch += empCont;
+            currentBalNMatch *= (1 + (percent / 100.0));
 
-    public ArrayList<Double> yearlyBalancesMissing() {
-        //make a new list to hold data
-        ArrayList<Double> balances = new ArrayList<>();
+            //balance yes match
+            currentBalYMatch += (empCont + actualMatch);
+            currentBalYMatch *= (1 + (percent / 100.0));
 
-        double currentBal = startBal;
-        double currentSal = salary;
-        int years = retAge - age;
-
-        //year 0
-        balances.add(currentBal);
-
-        for (int i = 0; i < years; i++) {
-            double empCont = currentSal * (contribution / 100.0);
-            double matchLimit = currentSal * (salaryMatch / 100.0);
-            double actualMatch = 0;
-
-            currentBal += empCont + actualMatch;
-            currentBal *= (1 + (percent / 100.0));
+            //raise :D
             currentSal *= (1 + (raise / 100.0));
-
-            //adds the result to the data list
-            balances.add(currentBal);
+            //add data to list of arrays
+            yearly.add(new double[]{cumulativeEmpCont, currentBalNMatch, currentBalYMatch});
         }
 
-        return balances;
+        return yearly;
     }
+
+
 
     @Override
     public void calculateReturn(){
