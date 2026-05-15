@@ -12,23 +12,23 @@ public class fPane extends JPanel {
         
         //fields
         JLabel cAge = new JLabel("Enter current age: ");
-        JTextField cAgeField = new JTextField(1);
+        JTextField cAgeField = new JTextField("25");
         JLabel rAge = new JLabel("Enter retirement age: ");
-        JTextField rAgeField = new JTextField(1);
+        JTextField rAgeField = new JTextField("65");
         JLabel cBal = new JLabel("Amount in 401k currently: ");
-        JTextField cBalField = new JTextField(1);
+        JTextField cBalField = new JTextField("0");
         JLabel salarY = new JLabel("Enter current salary: "); //has a different title to differenciate it frm other things in code elsewhere
-        JTextField salaryField = new JTextField(1);
+        JTextField salaryField = new JTextField("40000");
         JLabel contributioN = new JLabel("Percentage you will contribute each month: ");
-        JTextField contributionField = new JTextField(1);
+        JTextField contributionField = new JTextField("6");
         JLabel raisE = new JLabel("How much will your salary raise annually: ");
-        JTextField raiseField = new JTextField(1);
+        JTextField raiseField = new JTextField("4");
         JLabel returN = new JLabel("Annual rate of return, in percentage: ");
-        JTextField returnField = new JTextField(1);
+        JTextField returnField = new JTextField("7");
         JLabel eMatch = new JLabel("How much will your employer match your contributions: ");
-        JTextField eMatchField = new JTextField(1);
+        JTextField eMatchField = new JTextField("50");
         JLabel eSalaryMatch = new JLabel("Percentage of salary you're employer will match: ");
-        JTextField eSalaryField = new JTextField(1);
+        JTextField eSalaryField = new JTextField("10");
         JLabel output = new JLabel("Total Amount Saved: ");
         //buttons
         JButton clear = new JButton("Clear");
