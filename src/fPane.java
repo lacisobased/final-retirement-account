@@ -1,8 +1,10 @@
 //ryan williams jr; 1373857; CSCI-125; M07
 //
 
+import org.jfree.data.xy.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class fPane extends JPanel {
     public fPane() {
@@ -13,6 +15,8 @@ public class fPane extends JPanel {
         JTextField cAgeField = new JTextField(1);
         JLabel rAge = new JLabel("Enter retirement age: ");
         JTextField rAgeField = new JTextField(1);
+        JLabel cBal = new JLabel("Amount in 401k currently: ");
+        JTextField cBalField = new JTextField(1);
         JLabel salarY = new JLabel("Enter current salary: "); //has a different title to differenciate it frm other things in code elsewhere
         JTextField salaryField = new JTextField(1);
         JLabel contributioN = new JLabel("Percentage you will contribute each month: ");
@@ -35,6 +39,8 @@ public class fPane extends JPanel {
         this.add(cAgeField);
         this.add(rAge);
         this.add(rAgeField);
+        this.add(cBal);
+        this.add(cBalField);
         this.add(salarY);
         this.add(salaryField);
         this.add(raisE);
@@ -49,5 +55,38 @@ public class fPane extends JPanel {
         this.add(eSalaryField);
         this.add(calculate);
         this.add(clear);
+
+        //calculations
+        calculate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    //getting things from the text fields
+                    int cAge = Integer.parseInt(cAgeField.getText());
+                    int rAge = Integer.parseInt(rAgeField.getText());
+                    int cBal = Integer.parseInt(cBalField.getText());
+                    int salary = Integer.parseInt(salaryField.getText());
+                    int contribution = Integer.parseInt(contributionField.getText());
+                    int raise = Integer.parseInt(raiseField.getText());
+                    int returN = Integer.parseInt(returnField.getText());
+                    int eMatch = Integer.parseInt(eMatchField.getText());
+                    int eSalary = Integer.parseInt(eSalaryField.getText());
+
+                    four01k c = new four01k(cAge, rAge, cBal, 00, returN, false, salary, contribution, raise, eMatch, eSalary);
+                    double FINAL = c.dCalculateReturn();
+                    JOptionPane.showMessageDialog(null, "Total savings: " + String.format("%.2f", FINAL));
+                }
+                catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Input Invalid! Enter whole numbers.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
     }
 }
+
+
+
+
+
+
