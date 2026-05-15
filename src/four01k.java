@@ -1,8 +1,10 @@
 //ryan williams jr; 1373857; CSCI-125; M07
-//
+//last touched by ryan on at 11:23pm
 
 
 import java.nio.file.FileSystemNotFoundException;
+import java.util.ArrayList; //needed to graph it later
+
 
 public class four01k extends retirementAccount {
     int salary; //starting salary
@@ -53,5 +55,32 @@ public class four01k extends retirementAccount {
         }
         this.endBal = currentBal;
         System.out.println("Your balance is $" + String.format("%.2f", this.endBal));
+    }
+
+    public ArrayList<Double> getYearlyBalances() {
+        //make a new list to hold data
+        ArrayList<Double> balances = new ArrayList<>();
+
+        double currentBal = startBal;
+        double currentSal = salary;
+        int years = retAge - age;
+
+        //year 0
+        balances.add(currentBal);
+
+        for (int i = 0; i < years; i++) {
+            double empCont = currentSal * (contribution / 100.0);
+            double matchLimit = currentSal * (salaryMatch / 100.0);
+            double actualMatch = Math.min(empCont, matchLimit) * (match / 100.0);
+
+            currentBal += empCont + actualMatch;
+            currentBal *= (1 + (percent / 100.0));
+            currentSal *= (1 + (raise / 100.0));
+
+            //adds the result to the data list
+            balances.add(currentBal);
+        }
+
+        return balances;
     }
 }
