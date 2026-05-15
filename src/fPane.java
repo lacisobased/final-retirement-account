@@ -14,7 +14,7 @@ public class fPane extends JPanel {
     public fPane(JTabbedPane pane) {
         this.pane = pane;
 
-        this.setLayout(new GridLayout(10,2, 20, 20 ));
+        this.setLayout(new GridLayout(11,2, 20, 20 ));
         
         //fields
         JLabel cAge = new JLabel("Enter current age: ");
@@ -36,6 +36,7 @@ public class fPane extends JPanel {
         JLabel eSalaryMatch = new JLabel("Percentage of salary you're employer will match: ");
         JTextField eSalaryField = new JTextField("10");
         JLabel output = new JLabel("Total Amount Saved: ");
+        JLabel output2 = new JLabel("");
         //buttons
         JButton clear = new JButton("Reset to Default");
         JButton calculate = new JButton("Calculate");
@@ -59,6 +60,8 @@ public class fPane extends JPanel {
         this.add(eMatchField);
         this.add(eSalaryMatch);
         this.add(eSalaryField);
+        this.add(output);
+        this.add(output2);
         this.add(calculate);
         this.add(clear);
 
@@ -79,11 +82,14 @@ public class fPane extends JPanel {
                     int eSalary = Integer.parseInt(eSalaryField.getText());
 
                     //parse text fields and put turn it into something usuable
-                    four01k c = new four01k(cAge, rAge, cBal, 00, returN, false, salary, contribution, raise, eMatch, eSalary);
+                    four01k c = new four01k(cAge, rAge, cBal, 0.0, returN, false, salary, contribution, raise, eMatch, eSalary);
 
                     //popup
                     double FINAL = c.dCalculateReturn();
                     JOptionPane.showMessageDialog(null, "Total savings: " + String.format("%.2f", FINAL));
+
+                    //display it as a number
+                    output2.setText("$" + String.format("%.2f", FINAL));
 
                     //CHART.
                         //data for chart
@@ -140,6 +146,7 @@ public class fPane extends JPanel {
                 eMatchField.setText("50");
                 eSalaryField.setText("10");
                 cBalField.setText("0");
+                output2.setText("");
             }
         });
     }
