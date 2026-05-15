@@ -31,7 +31,7 @@ public class fPane extends JPanel {
         JTextField eSalaryField = new JTextField("10");
         JLabel output = new JLabel("Total Amount Saved: ");
         //buttons
-        JButton clear = new JButton("Clear");
+        JButton clear = new JButton("Reset to Default");
         JButton calculate = new JButton("Calculate");
         
         //rinse repeat
