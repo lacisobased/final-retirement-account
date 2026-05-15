@@ -1,13 +1,19 @@
 //ryan williams jr; 1373857; CSCI-125; M07
 //
 
+import org.jfree.chart.*;
 import org.jfree.data.xy.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class fPane extends JPanel {
-    public fPane() {
+    JTabbedPane pane;
+
+    public fPane(JTabbedPane pane) {
+        this.pane = pane;
+
         this.setLayout(new GridLayout(10,2, 20, 20 ));
         
         //fields
@@ -72,9 +78,36 @@ public class fPane extends JPanel {
                     int eMatch = Integer.parseInt(eMatchField.getText());
                     int eSalary = Integer.parseInt(eSalaryField.getText());
 
+                    //parse text fields and put turn it into something usuable
                     four01k c = new four01k(cAge, rAge, cBal, 00, returN, false, salary, contribution, raise, eMatch, eSalary);
+
+                    //popup
                     double FINAL = c.dCalculateReturn();
                     JOptionPane.showMessageDialog(null, "Total savings: " + String.format("%.2f", FINAL));
+
+                    //graph in new tab
+                    ArrayList<Double> balances = c.yearlyBalances();
+                        //put things in graph that makes sense
+                    XYSeries series = new XYSeries("401k Growth");
+                    for (int i = 0; i < balances.size(); i++) {
+                        series.add(i, balances.get(i));
+                    }
+                    XYSeriesCollection data = new XYSeriesCollection(series);
+                        //chart
+                    JFreeChart chart = ChartFactory.createXYLineChart(
+                            "Retirement Savings",
+                            "years working",
+                            "Money Saved ($)",
+                            data);
+
+                    ChartPanel chartPanel = new ChartPanel(chart);
+                    if (pane.getTabCount() > 2) {
+                        pane.removeTabAt(2);
+                    }
+
+                    pane.addTab("Growth Chart", chartPanel);
+                    pane.setSelectedIndex(2);
+
                 }
                 catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input Invalid! Enter whole numbers.", "Error", JOptionPane.ERROR_MESSAGE);
