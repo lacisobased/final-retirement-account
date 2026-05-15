@@ -10,10 +10,14 @@ public class infoPane extends JPanel {
         this.setLayout(new GridLayout(2,2,10, 10));
 
         JLabel roth4 = new JLabel("<html>Roth 401k: <br/>" +
-                "test string 1" );
+                "<html> \u2058 A Roth 401(k) is an employer-sponsored retirement plan that allows employees to contribute after-tax dollars via payroll deduction, offering tax-free qualified withdrawals of both contributions and earnings in retirement.<br/>" +
+                "<html> \u2058 No taxes on qualified distributions." +
+                "<html> \u2058 Distributions and earnings are not taxed as long as the account has been held for at least five years and the distribution is on or after 59 ½ or due to disability or death.");
 
         JLabel four01k = new JLabel("<html>401k <br/>" +
-                "this is the description of a regular 401k. blah blah blah");
+                "<html> \u2058 A 401(k) is a type of that offers significant tax advantages. When you participate in a 401(k), you decide how much of each paycheck to contribute, and your employer automatically deducts this amount and invests it according to your choices. Many employers also match a percentage of your contributions, essentially providing free money toward your retirement. <br/>" +
+                "<html> \u2058 Contributions are made pre-tax.<br/>" +
+                "<html> \u2058 Withdrawals are taxed. Distributions before age 59 ½ may have penalties unless you meet an IRS exception.");
         //adding portion for the IRAS below
         JLabel  rothI = new JLabel("<html>Roth IRA: <br/>" +
                 "<html> \u2058 A Roth IRA is funded with after-tax dollars, allowing both growth and qualified withdrawals to remain tax-free after age 59½ and after holding the IRA for at least five years. <br/>" +
