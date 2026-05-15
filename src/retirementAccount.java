@@ -24,5 +24,6 @@ abstract public class retirementAccount {
 
     //methods
     abstract void calculateReturn();
+    abstract double dCalculateReturn();
 
 }
