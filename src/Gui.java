@@ -19,7 +19,7 @@ public class Gui {
         //tabbed panes for the various settings
         JTabbedPane pane = new JTabbedPane();
         infoPane infoPan = new infoPane();
-        fPane fourPan = new fPane();
+        fPane fourPan = new fPane(pane);
         /** JComponent iraPan = new JPanel(new GridLayout(2, 2, 20, 20)); why the FUCK did i do this */
 
         //pane for information, roth vs non roth accounts
