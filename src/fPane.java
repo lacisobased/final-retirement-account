@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
+import java.io.File;
 
 public class fPane extends JPanel {
     JTabbedPane pane;
@@ -117,13 +119,51 @@ public class fPane extends JPanel {
                             "Balance ($)",
                             data
                     );
+                    //save button
+                    ChartPanel panel = new ChartPanel(chart); //wrapping chart in panel
+                    JButton saveBtn = new JButton("Save Chart as png"); //save button
+
+                    //new panel tab
+                    JPanel chartContainer = new JPanel(new BorderLayout());
+                    chartContainer.add(panel, BorderLayout.CENTER);
+                    chartContainer.add(saveBtn, BorderLayout.SOUTH);
+
+                    //save button functionality
+                    saveBtn.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            //save file window
+                            JFileChooser fileChooser = new JFileChooser();
+                            fileChooser.setDialogTitle("Save Chart As");
+
+                            //when user clicks save
+                            if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                                File fileToSave = fileChooser.getSelectedFile();
+
+                                //append .png
+                                if (!fileToSave.getName().toLowerCase().endsWith(".png")) {
+                                    fileToSave = new File(fileToSave.getParentFile(), fileToSave.getName() + ".png");
+                                }
+
+                                try {
+                                    //save the image
+                                    ChartUtils.saveChartAsPNG(fileToSave, chart, 1000, 1000);
+                                    JOptionPane.showMessageDialog(null, "chart saved successfully!", "success", JOptionPane.INFORMATION_MESSAGE);
+                                } catch (Exception ex) {
+                                    JOptionPane.showMessageDialog(null, "error saving chart.", "error", JOptionPane.ERROR_MESSAGE);
+                                }
+                            }
+                        }
+                    });
+
+
+
                     //chart in new tab
-                    ChartPanel chartPanel = new ChartPanel(chart);
                     if (pane.getTabCount() > 3) {
                         pane.removeTabAt(3);
                     }
 
-                    pane.addTab("401k Growth Chart", chartPanel);
+                    pane.addTab("401k Growth Chart", chartContainer);
                     pane.setSelectedIndex(3);
 
                 }
