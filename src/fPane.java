@@ -85,21 +85,33 @@ public class fPane extends JPanel {
                     double FINAL = c.dCalculateReturn();
                     JOptionPane.showMessageDialog(null, "Total savings: " + String.format("%.2f", FINAL));
 
-                    //graph in new tab
-                    ArrayList<Double> balances = c.yearlyBalances();
-                        //put things in graph that makes sense
-                    XYSeries series = new XYSeries("401k Growth");
-                    for (int i = 0; i < balances.size(); i++) {
-                        series.add(i, balances.get(i));
+                    //CHART.
+                        //data for chart
+                    ArrayList<double[]> yearly = c.yearlyBalances();
+                        //chart lines
+                    XYSeries seriesCont = new XYSeries("Employee Contributions");
+                    XYSeries seriesNoMatch = new XYSeries("Growth (No Match)");
+                    XYSeries seriesWithMatch = new XYSeries("Growth (Yes Match)");
+                        //get data for chart lines
+                    for (int i = 0; i < yearly.size(); i++) {
+                        double[] yearData = yearly.get(i);
+                        seriesCont.add(i, yearData[0]);     // index 0 is cumulative contributions
+                        seriesNoMatch.add(i, yearData[1]);  // index 1 is no match
+                        seriesWithMatch.add(i, yearData[2]);// index 2 is with match
                     }
-                    XYSeriesCollection data = new XYSeriesCollection(series);
-                        //chart
+                        //smush em into one
+                    XYSeriesCollection data = new XYSeriesCollection();
+                    data.addSeries(seriesCont);
+                    data.addSeries(seriesNoMatch);
+                    data.addSeries(seriesWithMatch);
+                        //actual graph
                     JFreeChart chart = ChartFactory.createXYLineChart(
-                            "Retirement Savings",
-                            "years working",
-                            "Money Saved ($)",
-                            data);
-
+                            "401k Growth Comparison",
+                            "Years Working",
+                            "Balance ($)",
+                            data
+                    );
+                    //chart in new tab
                     ChartPanel chartPanel = new ChartPanel(chart);
                     if (pane.getTabCount() > 2) {
                         pane.removeTabAt(2);
